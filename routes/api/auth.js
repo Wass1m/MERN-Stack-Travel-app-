@@ -14,8 +14,22 @@ const isAdmin = require("../../middleware/isAdmin");
 
 const router = express.Router();
 
+// @router GET /api/user
+// @desc  get current user
+// @access public
+
+router.get("/", auth, async (req, res) => {
+  try {
+    let user = await User.findById(req.user.id).select("-password");
+    res.json(user);
+  } catch (error) {
+    console.error(error.response);
+    res.status(500).send("SERVER ERROR");
+  }
+});
+
 // @router POST /api/user
-// @desc  register a user
+// @desc  login a user
 // @access public
 
 router.post(
@@ -29,7 +43,7 @@ router.post(
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(405).json({ errors: errors.array() });
     }
 
     const { email, password } = req.body;
@@ -53,6 +67,7 @@ router.post(
           .json({ errors: [{ msg: "Invalid credentials" }] });
       }
 
+      console.log("HERE");
       // return the jsonwebtoken
 
       const payload = {
@@ -61,6 +76,8 @@ router.post(
           isAdmin: user.isAdmin,
         },
       };
+
+      console.log("HERE2");
 
       await jwt.sign(
         payload,
@@ -71,6 +88,8 @@ router.post(
           res.json({ token });
         }
       );
+
+      console.log("HERE3");
     } catch (error) {
       console.error(error.message);
       res.status(500).send("server error");
