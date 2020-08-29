@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Continents } from "./const";
 import Upload from "../Utils/Upload";
+import { connect } from "react-redux";
+import { uploadProduct } from "../../redux/actions/product";
 
-const UploadProducts = (props) => {
+const UploadProducts = ({ uploadProduct, auth, product: { images } }) => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -19,7 +21,14 @@ const UploadProducts = (props) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    let formFinal = {
+      ...formData,
+      writer: auth.user._id,
+      images,
+    };
+
+    uploadProduct(formFinal);
   };
 
   return (
@@ -86,4 +95,9 @@ const UploadProducts = (props) => {
 
 UploadProducts.propTypes = {};
 
-export default UploadProducts;
+const mapStateToProps = (state) => ({
+  product: state.product,
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { uploadProduct })(UploadProducts);

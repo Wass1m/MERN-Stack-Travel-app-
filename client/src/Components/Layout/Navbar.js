@@ -43,8 +43,10 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading, user } }) => {
       <header>
         <nav className="navbar">
           <div className="logo">
-            <img src={logo} alt="" />
-            <h1>Wassines Travel</h1>
+            <Link to="/">
+              <img src={logo} alt="" />
+            </Link>
+            <h1>Wassim Travel</h1>
           </div>
           <ul className="nav-links">
             {isAuthenticated ? authLinks : guestLinks}

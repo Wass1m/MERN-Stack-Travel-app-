@@ -1,8 +1,16 @@
-import React from "react";
+import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
+import Products from "./Products/Products";
 
 const HomeScreen = (props) => {
-  return <div>Welcome home</div>;
+  return (
+    <Fragment>
+      <div className="products">
+        <h1>Travel anywhere in the world</h1>
+        <Products />
+      </div>
+    </Fragment>
+  );
 };
 
 HomeScreen.propTypes = {};
