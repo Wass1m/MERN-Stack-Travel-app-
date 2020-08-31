@@ -13,6 +13,8 @@ import { loadUser } from "./redux/actions/auth";
 import UploadProducts from "./Components/Products/UploadProducts";
 import ProductPage from "./Components/Products/ProductPage";
 import CartDetails from "./Components/Cart/CartDetails";
+import OrderShipping from "./Components/Orders/OrderShipping";
+import OrderPayment from "./Components/Orders/OrderPayment";
 
 function App() {
   useEffect(() => {
@@ -32,6 +34,8 @@ function App() {
             <Route exact path="/product/upload" component={UploadProducts} />
             <Route exact path="/product/:id" component={ProductPage} />
             <Route exact path="/cart" component={CartDetails} />
+            <Route exact path="/shipping" component={OrderShipping} />
+            <Route exact path="/payment" component={OrderPayment} />
           </Switch>
         </div>
       </Router>

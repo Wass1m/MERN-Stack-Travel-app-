@@ -32,7 +32,7 @@ const Login = ({ setAlert, loginUser, auth }) => {
       <div className="login">
         <div className="form-card">
           {" "}
-          <h1>Create an account on Wassim</h1>
+          <h1>Create an account on Wassines</h1>
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="form-group">
               <input

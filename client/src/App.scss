@@ -7,7 +7,6 @@
 body,
 html {
   font-family: Lato;
-  height: 100%;
 }
 
 .btn {
@@ -315,6 +314,22 @@ header {
       img {
         width: 200px;
       }
+    }
+  }
+}
+
+.checkout-steps {
+  width: 40rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem auto;
+  div {
+    border-bottom: 0.3rem #c0c0c0 solid;
+    color: #c0c0c0;
+    flex: 1 1;
+    &.active {
+      border-bottom: 0.3rem #0ceba0 solid;
+      color: #0ceba0;
     }
   }
 }

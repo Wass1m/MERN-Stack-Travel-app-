@@ -20,3 +20,4 @@ export const GET_ONE_PRODUCTS_FAIL = "GET_ONE_PRODUCTS_FAIL";
 // cart reducer
 export const ADD_TO_CART = "ADD_TO_CART";
 export const LOAD_CART = "LOAD_CART";
+export const REMOVE_CART = "REMOVE_CART";
