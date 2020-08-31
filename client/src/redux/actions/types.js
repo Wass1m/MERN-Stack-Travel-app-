@@ -21,3 +21,5 @@ export const GET_ONE_PRODUCTS_FAIL = "GET_ONE_PRODUCTS_FAIL";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const LOAD_CART = "LOAD_CART";
 export const REMOVE_CART = "REMOVE_CART";
+export const ADD_SHIPPING = "ADD_SHIPPING";
+export const ADD_PAYMENT = "ADD_PAYMENT";

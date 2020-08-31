@@ -1,9 +1,11 @@
 import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import { OrderCheckoutStep } from "./OrderCheckoutStep";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import { addPayment } from "../../redux/actions/cart";
+import { connect } from "react-redux";
 
-const OrderPayment = (props) => {
+const OrderPayment = ({ history, addPayment }) => {
   const [formData, setFormData] = useState({
     payment: "",
   });
@@ -13,8 +15,8 @@ const OrderPayment = (props) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    // addShipping(formData);
-    // history.push("payment");
+    addPayment(formData);
+    history.push("order");
   };
 
   const { payment } = formData;
@@ -52,4 +54,4 @@ const OrderPayment = (props) => {
 
 OrderPayment.propTypes = {};
 
-export default OrderPayment;
+export default connect(null, { addPayment })(withRouter(OrderPayment));

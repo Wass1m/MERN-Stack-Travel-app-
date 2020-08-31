@@ -1,0 +1,23 @@
+ <svg
+              version="1.1"
+              id="Calque_2"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 1921 606.5"
+              style="enable-background: new 0 0 1921 605.5"
+              xml:space="preserve"
+            >
+              <style type="text/css">
+                .st7 {
+                  fill: #ffffff;
+                  stroke-miterlimit: 10;
+                }
+              </style>
+              <path
+                class="st7"
+                d="M0.5,270c0,0,313-163.8,392-149.7c180-7.4,210.8,220.7,393,234.2c110,8.2,211.6-173.5,324-194.9
+c179-34.1,291,280.9,460,177.9c123.5-75.3,351-150.4,351-150.4V605H0.5V270z"
+              />
+            </svg>

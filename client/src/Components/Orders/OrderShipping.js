@@ -2,8 +2,10 @@ import React, { Fragment, useState } from "react";
 import PropTypes from "prop-types";
 import { OrderCheckoutStep } from "./OrderCheckoutStep";
 import { Link, withRouter } from "react-router-dom";
+import { addShipping } from "../../redux/actions/cart";
+import { connect } from "react-redux";
 
-const OrderShipping = ({ history }) => {
+const OrderShipping = ({ history, addShipping }) => {
   const [formData, setFormData] = useState({
     address: "",
     city: "",
@@ -16,7 +18,7 @@ const OrderShipping = ({ history }) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    // addShipping(formData);
+    addShipping(formData);
     history.push("payment");
   };
 
@@ -82,4 +84,4 @@ const OrderShipping = ({ history }) => {
 
 OrderShipping.propTypes = {};
 
-export default withRouter(OrderShipping);
+export default connect(null, { addShipping })(withRouter(OrderShipping));

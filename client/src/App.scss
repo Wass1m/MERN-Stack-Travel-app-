@@ -333,3 +333,77 @@ header {
     }
   }
 }
+
+.home-hero {
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  background: url("./assets/images/home-bg.jpg") no-repeat;
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  img {
+    position: absolute;
+    bottom: 0;
+  }
+  .white {
+    z-index: 1;
+  }
+  .gradient {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: linear-gradient(#00ff89 0%, #00a7ff 100%);
+    opacity: 0.6;
+  }
+  h1 {
+    z-index: 1;
+    margin: 4rem auto;
+    font: normal 500 50px/45px Lato;
+    color: white;
+  }
+}
+
+.order {
+  display: flex;
+  .order-details {
+    flex: 2;
+    padding: 1rem 2rem;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      td,
+      th {
+        border: 0.1rem black solid;
+        padding: 0.7rem 1.5rem;
+        text-align: left;
+
+        img {
+          width: 200px;
+        }
+      }
+    }
+  }
+  .order-actions {
+    flex: 1;
+    padding: 1rem 2rem;
+    .order-shipping {
+      margin: 1rem 0;
+      padding: 1rem 1rem;
+      box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.2);
+    }
+    .order-payment {
+      margin: 1rem 0;
+      padding: 1rem 1rem;
+      box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.2);
+    }
+    .order-price {
+      margin: 1rem 0;
+      padding: 1rem 1rem;
+      box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.2);
+    }
+  }
+}

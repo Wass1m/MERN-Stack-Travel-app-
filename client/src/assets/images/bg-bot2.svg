@@ -1,0 +1,39 @@
+ <svg
+              version="1.1"
+              id="Calque_3"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              x="0px"
+              y="0px"
+              viewBox="0 0 1921 604.5"
+              style="enable-background: new 0 0 1921 604.5"
+              xml:space="preserve"
+            >
+              <style type="text/css">
+                .st0 {
+                  fill: url(#SVGID_1_);
+                  stroke-miterlimit: 9;
+                }
+              </style>
+              <linearGradient
+                id="SVGID_1_"
+                gradientUnits="userSpaceOnUse"
+                x1="960.5"
+                y1="605"
+                x2="960.5"
+                y2="0.5"
+              >
+                <stop offset="0" style="stop-color: #00ee9f" />
+                <stop offset="7.012963e-02" style="stop-color: #00e8a7" />
+                <stop offset="0.4863" style="stop-color: #00c8d3" />
+                <stop offset="0.8101" style="stop-color: #00b3ee" />
+                <stop offset="1" style="stop-color: #00acf8" />
+              </linearGradient>
+              <path
+                class="st0"
+                d="M0.5,187.9c0,0,313-203.9,392-186.4c180-9.2,210.8,274.8,393,291.6c110,10.1,211.6-216,324-242.7
+	c179-42.4,291,349.7,460,221.4c123.5-93.7,351-187.3,351-187.3V605H0.5V187.9z"
+              />
+            </svg>
+
+           

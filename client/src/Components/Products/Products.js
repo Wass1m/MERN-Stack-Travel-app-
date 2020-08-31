@@ -12,6 +12,7 @@ import ContinentFilter from "../Filters/ContinentFilter";
 import PriceFilter from "../Filters/PriceFilter";
 import { prices } from "../Filters/Data";
 import SearchFilter from "../Filters/SearchFilter";
+import Spinner from "../../assets/spinner.svg";
 
 const Products = ({
   product: { products, loading },
@@ -113,10 +114,9 @@ const Products = ({
         <PriceFilter handle={handleFilters} />
       </div>
       <SearchFilter handleSearch={handleSearch} />
-      {loading ? (
+      {loading || products.length === 0 ? (
         <Fragment>
-          {" "}
-          <h1>Products loading....</h1>
+          <img src={Spinner} alt="" />
         </Fragment>
       ) : (
         <div className="products-flex-row">

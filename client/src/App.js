@@ -15,6 +15,7 @@ import ProductPage from "./Components/Products/ProductPage";
 import CartDetails from "./Components/Cart/CartDetails";
 import OrderShipping from "./Components/Orders/OrderShipping";
 import OrderPayment from "./Components/Orders/OrderPayment";
+import PlaceOrder from "./Components/Orders/PlaceOrder";
 
 function App() {
   useEffect(() => {
@@ -36,6 +37,7 @@ function App() {
             <Route exact path="/cart" component={CartDetails} />
             <Route exact path="/shipping" component={OrderShipping} />
             <Route exact path="/payment" component={OrderPayment} />
+            <Route exact path="/order" component={PlaceOrder} />
           </Switch>
         </div>
       </Router>

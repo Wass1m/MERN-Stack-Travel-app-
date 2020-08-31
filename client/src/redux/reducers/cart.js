@@ -1,8 +1,16 @@
-import { ADD_TO_CART, LOAD_CART, REMOVE_CART } from "../actions/types";
+import {
+  ADD_TO_CART,
+  LOAD_CART,
+  REMOVE_CART,
+  ADD_SHIPPING,
+  ADD_PAYMENT,
+} from "../actions/types";
 import Cookie from "js-cookie";
 
 const initialState = {
   cartItems: [],
+  shipping: null,
+  payment: null,
 };
 
 export default function (state = initialState, action) {
@@ -41,6 +49,16 @@ export default function (state = initialState, action) {
       return {
         ...state,
         cartItems: removedArray,
+      };
+    case ADD_SHIPPING:
+      return {
+        ...state,
+        shipping: payload,
+      };
+    case ADD_PAYMENT:
+      return {
+        ...state,
+        payment: payload,
       };
     default:
       return state;
