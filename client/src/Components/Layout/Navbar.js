@@ -4,8 +4,9 @@ import logo from "../../assets/images/logo.svg";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../../redux/actions/auth";
+import { Nav } from "antd";
 
-const Navbar = ({ logout, auth: { isAuthenticated, loading, user } }) => {
+const Navbar = ({ logout, auth: { isAuthenticated, loading, user }, cart }) => {
   const guestLinks = (
     <Fragment>
       <li>
@@ -13,6 +14,16 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading, user } }) => {
       </li>
       <li>
         <Link to="/register">Register</Link>
+      </li>
+      <li id="cart">
+        <Link to="/cart">
+          Cart
+          {cart === null ? null : cart.cartItems.length > 0 ? (
+            <span>
+              <i>{cart.cartItems.length}</i>
+            </span>
+          ) : null}
+        </Link>
       </li>
     </Fragment>
   );
@@ -68,6 +79,7 @@ Navbar.propTypes = {};
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  cart: state.cart,
 });
 
 export default connect(mapStateToProps, { logout })(Navbar);

@@ -5,6 +5,10 @@ import {
   UPLOAD_PRODUCT_FAIL,
   GET_PRODUCTS,
   GET_PRODUCTS_FAIL,
+  CLEAR_PRODUCTS,
+  FILTER_PRODUCTS,
+  GET_ONE_PRODUCTS,
+  GET_ONE_PRODUCTS_FAIL,
 } from "../actions/types";
 
 const initialState = {
@@ -39,8 +43,22 @@ export default function (state = initialState, action) {
         products: [...state.products, ...payload],
         loading: false,
       };
+    case FILTER_PRODUCTS:
+      return {
+        ...state,
+        products: payload,
+        loading: false,
+      };
+    case GET_ONE_PRODUCTS:
+      return {
+        ...state,
+        loading: false,
+        product: payload,
+      };
     case UPLOAD_PRODUCT_FAIL:
     case GET_PRODUCTS_FAIL:
+    case CLEAR_PRODUCTS:
+    case GET_ONE_PRODUCTS_FAIL:
       return {
         ...state,
         product: null,

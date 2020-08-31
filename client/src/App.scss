@@ -2,6 +2,7 @@
   font-family: Lato;
   src: url("./assets/fonts/Lato/Lato-Regular.ttf");
 }
+@import "../node_modules/react-image-gallery/styles/scss/image-gallery.scss";
 
 body,
 html {
@@ -20,10 +21,9 @@ html {
   &:hover {
     box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.75);
   }
-}
-
-.btn-primary {
-  background: linear-gradient(#ffa8e1 0%, #00a7ff 100%);
+  &.primary {
+    background: linear-gradient(#ffa8e1 0%, #00a7ff 100%);
+  }
 }
 
 .alert {
@@ -66,9 +66,26 @@ header {
       li {
         margin-left: 1rem;
         list-style-type: none;
+
         a {
           color: black;
           text-decoration: none;
+        }
+      }
+    }
+    #cart {
+      position: relative;
+
+      span {
+        position: absolute;
+        top: -4px;
+        border-radius: 50%;
+        height: 20px;
+        width: 20px;
+
+        background: linear-gradient(#ffa8e1 0%, #00a7ff 100%);
+        i {
+          margin-left: 3px;
         }
       }
     }
@@ -190,6 +207,12 @@ header {
     flex-wrap: wrap;
     justify-content: space-around;
   }
+  a {
+    text-decoration: none;
+    list-style-type: none;
+    color: black;
+  }
+
   .single-product {
     box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.3);
     border-radius: 4px;
@@ -199,6 +222,9 @@ header {
     padding: 1rem 2rem;
     margin: 1rem 1rem;
     transition: box-shadow 0.6s ease;
+
+    color: black;
+
     .image-slider {
       img {
         width: 100%;
@@ -211,5 +237,84 @@ header {
   }
   button {
     margin: 1rem 0;
+  }
+}
+
+.filters {
+  display: flex;
+  width: 100%;
+
+  justify-content: space-between;
+  .filter-continent {
+    box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.75);
+
+    padding: 1rem 2rem;
+    margin: 1rem 2rem;
+    background: white;
+    &.price {
+    }
+  }
+}
+
+.search-filter {
+  input {
+    padding: 1rem 2rem;
+    margin: 1rem 2rem;
+    &:focus {
+      box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.75);
+    }
+  }
+}
+
+.product-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  .flex-row {
+    width: 100%;
+    display: flex;
+    .slider {
+      width: 100%;
+      max-width: 50%;
+    }
+    .product-info {
+      width: 100%;
+      max-width: 50%;
+      padding: 0 1rem;
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        td,
+        th {
+          border: 0.1rem black solid;
+          padding: 0.7rem 1.5rem;
+          text-align: left;
+        }
+      }
+      button {
+        display: flex;
+        margin: 1rem auto;
+      }
+    }
+  }
+}
+
+.cart-details {
+  padding: 0 4rem;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    td,
+    th {
+      border: 0.1rem black solid;
+      padding: 0.7rem 1.5rem;
+      text-align: left;
+
+      img {
+        width: 200px;
+      }
+    }
   }
 }

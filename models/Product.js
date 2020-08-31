@@ -39,4 +39,17 @@ const productSchema = mongoose.Schema(
   { timestamps: true }
 );
 
+productSchema.index(
+  {
+    title: "text",
+    description: "text",
+  },
+  {
+    weights: {
+      name: 5,
+      description: 1,
+    },
+  }
+);
+
 module.exports = Product = mongoose.model("product-travel", productSchema);

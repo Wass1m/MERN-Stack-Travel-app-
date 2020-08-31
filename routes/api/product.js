@@ -88,14 +88,57 @@ router.post("/", async (req, res) => {
   let limit = req.body.limit ? parseInt(req.body.limit) : 100;
   let skip = parseInt(req.body.skip);
 
+  let findArgs = {};
+  let term = req.body.searchTerm;
+
+  for (let key in req.body.filters) {
+    if (req.body.filters[key].length > 0) {
+      if (key === "price") {
+        findArgs[key] = {
+          $gte: req.body.filters[key][0],
+          $lte: req.body.filters[key][1],
+        };
+      } else {
+        findArgs[key] = req.body.filters[key];
+      }
+    }
+  }
+
+  console.log(findArgs);
+  console.log(skip);
+  console.log(limit);
+  console.log(term);
+  let products = null;
   try {
-    const products = await Product.find()
-      .populate("user")
-      .sort([[sortBy, order]])
-      .skip(skip)
-      .limit(limit);
+    if (term) {
+      products = await Product.find(findArgs)
+        .find({ $text: { $search: term } })
+        .populate("user")
+        .sort([[sortBy, order]])
+        .skip(skip)
+        .limit(limit);
+    } else {
+      products = await Product.find(findArgs)
+        .populate("user")
+        .sort([[sortBy, order]])
+        .skip(skip)
+        .limit(limit);
+    }
+
+    console.log(products);
 
     return res.json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("SERVER ERROR");
+  }
+});
+
+router.get("/:id", async (req, res) => {
+  try {
+    let product = await Product.findById(req.params.id);
+
+    return res.json(product);
   } catch (error) {
     console.error(error);
     res.status(500).send("SERVER ERROR");
