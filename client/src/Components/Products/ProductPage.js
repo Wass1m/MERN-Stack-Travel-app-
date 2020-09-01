@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { getProductById } from "../../redux/actions/product";
 import { addToCart } from "../../redux/actions/cart";
 // import { withRouter } from "react-router-dom";
+import Spinner from "../../assets/spinner.svg";
+
 import { useEffect } from "react";
 
 const ProductPage = ({
@@ -18,9 +20,15 @@ const ProductPage = ({
   }, []);
 
   return loading ? (
-    <Fragment>Waiting....</Fragment>
+    <Fragment>
+      {" "}
+      <img src={Spinner} alt="" />
+    </Fragment>
   ) : product === null ? (
-    <Fragment>Waiting....</Fragment>
+    <Fragment>
+      {" "}
+      <img src={Spinner} alt="" />
+    </Fragment>
   ) : (
     <div className="product-page">
       <h1>{product.title}</h1>

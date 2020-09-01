@@ -2,9 +2,44 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { removeCartItem } from "../../redux/actions/cart";
-import { Link } from "react-router-dom";
+import { addOrder } from "../../redux/actions/order";
+import { Link, withRouter } from "react-router-dom";
 
-const PlaceOrder = ({ cart, removeCartItem }) => {
+const PlaceOrder = ({
+  cart,
+  auth: { user },
+  removeCartItem,
+  addOrder,
+  history,
+}) => {
+  const handleOrder = () => {
+    const pricetot = cart.cartItems.reduce((acc, item) => acc + item.price, 0);
+
+    let orderIteums = [];
+
+    cart.cartItems.map((item) =>
+      orderIteums.push({
+        name: item.title,
+        price: item.price,
+        product: item._id,
+      })
+    );
+
+    const formData = {
+      user: user._id,
+      orderItems: orderIteums,
+      shipping: cart.shipping,
+      payment: cart.payment,
+      totalPrice: pricetot,
+    };
+
+    console.log(formData);
+
+    addOrder(formData);
+
+    history.push("myorders");
+  };
+
   return (
     <div className="order">
       <div className="order-details">
@@ -61,12 +96,19 @@ const PlaceOrder = ({ cart, removeCartItem }) => {
         </div>
         <div className="order-payment">
           <h3>
-            Payment method : {cart.payment !== null && cart.payment.payment}{" "}
+            Payment method :{" "}
+            {cart.payment !== null && cart.payment.paymentMethod}{" "}
           </h3>
         </div>
         <div className="order-price">
-          <h1>Total Ammount : </h1>
-          <button className="btn primary">Proceed</button>
+          <h1>
+            Total Ammount :{" "}
+            {cart !== null &&
+              cart.cartItems.reduce((acc, item) => acc + item.price, 0)}{" "}
+          </h1>
+          <button onClick={() => handleOrder()} className="btn primary">
+            Proceed
+          </button>
         </div>
       </div>
     </div>
@@ -77,6 +119,9 @@ PlaceOrder.propTypes = {};
 
 const mapStateToProps = (state) => ({
   cart: state.cart,
+  auth: state.auth,
 });
 
-export default connect(mapStateToProps, { removeCartItem })(PlaceOrder);
+export default connect(mapStateToProps, { removeCartItem, addOrder })(
+  withRouter(PlaceOrder)
+);

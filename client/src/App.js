@@ -16,6 +16,8 @@ import CartDetails from "./Components/Cart/CartDetails";
 import OrderShipping from "./Components/Orders/OrderShipping";
 import OrderPayment from "./Components/Orders/OrderPayment";
 import PlaceOrder from "./Components/Orders/PlaceOrder";
+import MyOrders from "./Components/Orders/MyOrders";
+import PrivateRoute from "./Components/Routing/PrivateRoute";
 
 function App() {
   useEffect(() => {
@@ -38,6 +40,8 @@ function App() {
             <Route exact path="/shipping" component={OrderShipping} />
             <Route exact path="/payment" component={OrderPayment} />
             <Route exact path="/order" component={PlaceOrder} />
+
+            <PrivateRoute exact path="/myorders" component={MyOrders} />
           </Switch>
         </div>
       </Router>

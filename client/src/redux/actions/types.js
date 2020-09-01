@@ -23,3 +23,10 @@ export const LOAD_CART = "LOAD_CART";
 export const REMOVE_CART = "REMOVE_CART";
 export const ADD_SHIPPING = "ADD_SHIPPING";
 export const ADD_PAYMENT = "ADD_PAYMENT";
+export const CLEAR_CART = "CLEAR_CART";
+// order reducer
+export const ADD_ORDER = "ADD_ORDER";
+export const ADD_ORDER_FAIL = "ADD_ORDER_FAIL";
+export const GET_MY_ORDERS = "GET_MY_ORDERS";
+export const GET_MY_ORDERS_FAIL = "GET_MY_ORDERS_FAIL";
+export const CLEAR_ORDERS = "CLEAR_ORDERS";

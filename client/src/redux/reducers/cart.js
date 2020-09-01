@@ -4,6 +4,7 @@ import {
   REMOVE_CART,
   ADD_SHIPPING,
   ADD_PAYMENT,
+  CLEAR_CART,
 } from "../actions/types";
 import Cookie from "js-cookie";
 
@@ -59,6 +60,14 @@ export default function (state = initialState, action) {
       return {
         ...state,
         payment: payload,
+      };
+    case CLEAR_CART:
+      Cookie.remove("cartItems");
+      return {
+        ...state,
+        cartItems: [],
+        payment: null,
+        shipping: null,
       };
     default:
       return state;

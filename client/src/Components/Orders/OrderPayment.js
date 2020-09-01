@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 
 const OrderPayment = ({ history, addPayment }) => {
   const [formData, setFormData] = useState({
-    payment: "",
+    paymentMethod: "",
   });
 
   const onChange = (e) => {
@@ -34,7 +34,7 @@ const OrderPayment = ({ history, addPayment }) => {
                 <input
                   value="paypal"
                   type="radio"
-                  name="payment"
+                  name="paymentMethod"
                   onChange={(e) => onChange(e)}
                   placeholder="Address"
                 />

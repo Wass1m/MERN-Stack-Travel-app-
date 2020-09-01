@@ -22,28 +22,21 @@ const Navbar = ({
       <li>
         <Link to="/register">Register</Link>
       </li>
-      <li id="cart">
-        <Link to="/cart">
-          Cart
-          {cart === null ? null : cart.cartItems.length > 0 ? (
-            <span>
-              <i>{cart.cartItems.length}</i>
-            </span>
-          ) : null}
-        </Link>
-      </li>
     </Fragment>
   );
 
   const authLinks = (
     <Fragment>
       <li>
-        <Link to="/dashboard">Dashboard</Link>
+        <Link to="/dashboard">{user !== null && user.name}</Link>
       </li>
       <li>
-        <a onClick={(e) => logout()} href="!#">
+        <Link onClick={(e) => logout()} to="/">
           Logout
-        </a>
+        </Link>
+      </li>
+      <li>
+        <Link to="/myorders">Orders</Link>
       </li>
     </Fragment>
   );
@@ -78,6 +71,16 @@ const Navbar = ({
                 ? adminLinks
                 : null
               : null}
+            <li id="cart">
+              <Link to="/cart">
+                Cart
+                {cart === null ? null : cart.cartItems.length > 0 ? (
+                  <span>
+                    <i>{cart.cartItems.length}</i>
+                  </span>
+                ) : null}
+              </Link>
+            </li>
           </ul>
         </nav>
       </header>
