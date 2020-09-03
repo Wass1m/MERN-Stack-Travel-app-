@@ -2,6 +2,11 @@
   font-family: Lato;
   src: url("./assets/fonts/Lato/Lato-Regular.ttf");
 }
+@font-face {
+  font-family: Beyond;
+  src: url("./assets/fonts/beyond_the_mountains.ttf");
+}
+
 @import "../node_modules/react-image-gallery/styles/scss/image-gallery.scss";
 
 body,
@@ -17,11 +22,15 @@ html {
   cursor: pointer;
   text-transform: uppercase;
   color: white;
+  transition: background 1s ease;
   &:hover {
-    box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.75);
+    background: linear-gradient(#00a7ff 0%, #0ceba0 100%);
   }
   &.primary {
     background: linear-gradient(#ffa8e1 0%, #00a7ff 100%);
+    &:hover {
+      background: linear-gradient(#00a7ff 0%, #ffa8e1 100%);
+    }
   }
 }
 
@@ -194,7 +203,7 @@ header {
 }
 
 .products {
-  background: linear-gradient(#0ceba0 0%, #00a7ff 100%);
+  // background: linear-gradient(#0ceba0 0%, #00a7ff 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -212,24 +221,56 @@ header {
     color: black;
   }
 
-  .single-product {
-    box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
-    background: white;
-    width: 20rem;
-    height: 20rem;
-    padding: 1rem 2rem;
-    margin: 1rem 1rem;
-    transition: box-shadow 0.6s ease;
+  // .single-product {
+  //   box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.3);
+  //   border-radius: 4px;
+  //   background: white;
+  //   width: 20rem;
+  //   height: 20rem;
+  //   padding: 1rem 2rem;
+  //   margin: 1rem 1rem;
+  //   transition: box-shadow 0.6s ease;
 
-    color: black;
+  //   color: black;
+
+  //   .image-slider {
+  //     img {
+  //       width: 100%;
+  //       height: 200px;
+  //     }
+  //   }
+  //   &:hover {
+  //     box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.75);
+  //   }
+  // }
+
+  .single-product {
+    display: grid;
+    grid-template-columns: 300px;
+    grid-template-rows: 210px 150px;
+    grid-template-areas: "image" "text";
+    background: white;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    margin: 2rem 2rem;
+    transition: box-shadow 0.6s ease;
+    box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.3);
 
     .image-slider {
+      grid-area: image;
       img {
         width: 100%;
-        height: 200px;
+        height: 210px;
+        border-top-left-radius: 18px;
+        border-top-right-radius: 18px;
       }
     }
+
+    .content {
+      grid-area: text;
+      padding: 0 1rem;
+    }
+
     &:hover {
       box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.75);
     }
@@ -242,10 +283,12 @@ header {
 .filters {
   display: flex;
   width: 100%;
+  background: linear-gradient(#00ff89 0%, #00a7ff 100%);
 
   justify-content: space-between;
   .filter-continent {
-    box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.75);
+    border-radius: 18px;
+    box-shadow: -4px 4px 28px -4px rgba(9, 36, 19, 0.87);
 
     padding: 1rem 2rem;
     margin: 1rem 2rem;
@@ -337,7 +380,8 @@ header {
 .home-hero {
   display: flex;
   flex-direction: column;
-  height: 60vh;
+  justify-content: space-between;
+  height: 80vh;
   background: url("./assets/images/home-bg.jpg") no-repeat;
   position: relative;
   background-size: cover;
@@ -359,11 +403,50 @@ header {
     background: linear-gradient(#00ff89 0%, #00a7ff 100%);
     opacity: 0.6;
   }
-  h1 {
+  .title {
+    margin: 2rem 0;
     z-index: 1;
-    margin: 4rem auto;
-    font: normal 500 50px/45px Lato;
-    color: white;
+    h1 {
+      text-align: center;
+
+      font: normal 700 70px/45px Lato;
+      color: white;
+      text-transform: uppercase;
+    }
+    .beyond {
+      font: normal 700 90px/45px Beyond;
+      text-transform: none;
+    }
+  }
+
+  .filter-box {
+    background-color: white;
+    z-index: 1;
+    width: 60%;
+    margin: 0 auto;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+
+    .filter-list {
+      display: flex;
+
+      div:first-child {
+        border-top-left-radius: 18px;
+      }
+      div:last-child {
+        border-top-right-radius: 18px;
+      }
+      .filter-item {
+        width: 100%;
+        padding: 2rem 0;
+        text-align: center;
+        cursor: pointer;
+        &:hover,
+        &.active {
+          background: linear-gradient(#00ff89 0%, #00a7ff 100%);
+        }
+      }
+    }
   }
 }
 
@@ -405,5 +488,113 @@ header {
       padding: 1rem 1rem;
       box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.2);
     }
+  }
+}
+
+.tours {
+  margin: 4rem 0;
+  .title {
+    h1 {
+      font: normal 700 50px/45px Lato;
+    }
+
+    text-align: center;
+    padding: 2rem 20rem;
+  }
+  .flex-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    .tour {
+      margin: 0 2rem;
+      display: grid;
+      grid-template-columns: 300px;
+      grid-template-rows: 100px 250px 100px;
+      grid-template-areas: "date" "text" "button";
+      justify-items: center;
+      align-items: center;
+      position: relative;
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      .date {
+        grid-area: date;
+        z-index: 1;
+        color: white;
+        padding: 0.3rem 4rem;
+        border-radius: 18px;
+        background: linear-gradient(#00ff89 0%, #00a7ff 100%);
+      }
+      .text {
+        grid-area: text;
+        text-align: center;
+        z-index: 1;
+        color: white;
+        h1 {
+          font: normal 700 50px/45px Beyond;
+        }
+      }
+      .more {
+        grid-area: button;
+        z-index: 1;
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0.4;
+        background: linear-gradient(#00ff89 0%, #080f13 100%);
+      }
+    }
+  }
+}
+
+.deluxe {
+  height: 90vh;
+  position: relative;
+  display: flex;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  .white-delux {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    opacity: 0.95;
+    z-index: 1;
+    width: 70%;
+    height: 70%;
+    .content {
+      padding: 0 10rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .text {
+        margin: 3rem 0;
+        text-align: center;
+      }
+      .title {
+        text-align: center;
+        h1 {
+          font: normal 700 50px/45px Lato;
+        }
+      }
+    }
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.4;
+    background: linear-gradient(#00ff89 0%, #080f13 100%);
   }
 }

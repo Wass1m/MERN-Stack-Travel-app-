@@ -2,6 +2,10 @@
   font-family: Lato;
   src: url("./assets/fonts/Lato/Lato-Regular.ttf");
 }
+@font-face {
+  font-family: Beyond;
+  src: url("./assets/fonts/beyond_the_mountains.ttf");
+}
 .image-gallery-icon {
   color: #fff;
   transition: all 0.2s ease-out;
@@ -396,12 +400,16 @@ html {
   cursor: pointer;
   text-transform: uppercase;
   color: white;
+  transition: background 1s ease;
 }
 .btn:hover {
-  box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.75);
+  background: linear-gradient(#00a7ff 0%, #0ceba0 100%);
 }
 .btn.primary {
   background: linear-gradient(#ffa8e1 0%, #00a7ff 100%);
+}
+.btn.primary:hover {
+  background: linear-gradient(#00a7ff 0%, #ffa8e1 100%);
 }
 
 .alert {
@@ -563,7 +571,6 @@ header .navbar #cart span i {
 }
 
 .products {
-  background: linear-gradient(#0ceba0 0%, #00a7ff 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -581,19 +588,29 @@ header .navbar #cart span i {
   color: black;
 }
 .products .single-product {
-  box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.3);
-  border-radius: 4px;
+  display: grid;
+  grid-template-columns: 300px;
+  grid-template-rows: 210px 150px;
+  grid-template-areas: "image" "text";
   background: white;
-  width: 20rem;
-  height: 20rem;
-  padding: 1rem 2rem;
-  margin: 1rem 1rem;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+  margin: 2rem 2rem;
   transition: box-shadow 0.6s ease;
-  color: black;
+  box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.3);
+}
+.products .single-product .image-slider {
+  grid-area: image;
 }
 .products .single-product .image-slider img {
   width: 100%;
-  height: 200px;
+  height: 210px;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+.products .single-product .content {
+  grid-area: text;
+  padding: 0 1rem;
 }
 .products .single-product:hover {
   box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.75);
@@ -605,10 +622,12 @@ header .navbar #cart span i {
 .filters {
   display: flex;
   width: 100%;
+  background: linear-gradient(#00ff89 0%, #00a7ff 100%);
   justify-content: space-between;
 }
 .filters .filter-continent {
-  box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.75);
+  border-radius: 18px;
+  box-shadow: -4px 4px 28px -4px rgba(9, 36, 19, 0.87);
   padding: 1rem 2rem;
   margin: 1rem 2rem;
   background: white;
@@ -692,7 +711,8 @@ header .navbar #cart span i {
 .home-hero {
   display: flex;
   flex-direction: column;
-  height: 60vh;
+  justify-content: space-between;
+  height: 80vh;
   background: url("./assets/images/home-bg.jpg") no-repeat;
   position: relative;
   background-size: cover;
@@ -715,11 +735,45 @@ header .navbar #cart span i {
   background: linear-gradient(#00ff89 0%, #00a7ff 100%);
   opacity: 0.6;
 }
-.home-hero h1 {
+.home-hero .title {
+  margin: 2rem 0;
   z-index: 1;
-  margin: 4rem auto;
-  font: normal 500 50px/45px Lato;
+}
+.home-hero .title h1 {
+  text-align: center;
+  font: normal 700 70px/45px Lato;
   color: white;
+  text-transform: uppercase;
+}
+.home-hero .title .beyond {
+  font: normal 700 90px/45px Beyond;
+  text-transform: none;
+}
+.home-hero .filter-box {
+  background-color: white;
+  z-index: 1;
+  width: 60%;
+  margin: 0 auto;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
+}
+.home-hero .filter-box .filter-list {
+  display: flex;
+}
+.home-hero .filter-box .filter-list div:first-child {
+  border-top-left-radius: 18px;
+}
+.home-hero .filter-box .filter-list div:last-child {
+  border-top-right-radius: 18px;
+}
+.home-hero .filter-box .filter-list .filter-item {
+  width: 100%;
+  padding: 2rem 0;
+  text-align: center;
+  cursor: pointer;
+}
+.home-hero .filter-box .filter-list .filter-item:hover, .home-hero .filter-box .filter-list .filter-item.active {
+  background: linear-gradient(#00ff89 0%, #00a7ff 100%);
 }
 
 .order {
@@ -761,6 +815,113 @@ header .navbar #cart span i {
   margin: 1rem 0;
   padding: 1rem 1rem;
   box-shadow: -4px 4px 28px -4px rgba(0, 0, 0, 0.2);
+}
+
+.tours {
+  margin: 4rem 0;
+}
+.tours .title {
+  text-align: center;
+  padding: 2rem 20rem;
+}
+.tours .title h1 {
+  font: normal 700 50px/45px Lato;
+}
+.tours .flex-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.tours .flex-row .tour {
+  margin: 0 2rem;
+  display: grid;
+  grid-template-columns: 300px;
+  grid-template-rows: 100px 250px 100px;
+  grid-template-areas: "date" "text" "button";
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+.tours .flex-row .tour .date {
+  grid-area: date;
+  z-index: 1;
+  color: white;
+  padding: 0.3rem 4rem;
+  border-radius: 18px;
+  background: linear-gradient(#00ff89 0%, #00a7ff 100%);
+}
+.tours .flex-row .tour .text {
+  grid-area: text;
+  text-align: center;
+  z-index: 1;
+  color: white;
+}
+.tours .flex-row .tour .text h1 {
+  font: normal 700 50px/45px Beyond;
+}
+.tours .flex-row .tour .more {
+  grid-area: button;
+  z-index: 1;
+}
+.tours .flex-row .tour .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.4;
+  background: linear-gradient(#00ff89 0%, #080f13 100%);
+}
+
+.deluxe {
+  height: 90vh;
+  position: relative;
+  display: flex;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+.deluxe .white-delux {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  opacity: 0.95;
+  z-index: 1;
+  width: 70%;
+  height: 70%;
+}
+.deluxe .white-delux .content {
+  padding: 0 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.deluxe .white-delux .content .text {
+  margin: 3rem 0;
+  text-align: center;
+}
+.deluxe .white-delux .content .title {
+  text-align: center;
+}
+.deluxe .white-delux .content .title h1 {
+  font: normal 700 50px/45px Lato;
+}
+.deluxe .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.4;
+  background: linear-gradient(#00ff89 0%, #080f13 100%);
 }
 
 /*# sourceMappingURL=App.css.map */
